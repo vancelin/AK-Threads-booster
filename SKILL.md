@@ -1,7 +1,7 @@
 ---
 name: ak-threads-booster
 description: "Threads growth operating system for topic selection, drafting, analysis, prediction, review, and tracker refresh based on the user's own post history."
-version: "1.2.0"
+version: "1.2.1"
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -99,6 +99,8 @@ Compiled memory files under `compiled/` are rebuilt views, not hand-edited state
 Red-line (R) and signal (S) definitions live in `knowledge/_shared/red-lines.md` — the single source of truth for both `/analyze` and `/draft`. Do not inline R-lists in sub-skill SKILL.md files.
 
 Runtime depth, compiled-memory behavior, and output-mode defaults live in `knowledge/_shared/runtime-budget.md`. In `lite` and `standard`, use `knowledge/cards/*` before full `knowledge/*.md` files.
+
+If `runtime.token_mode` is absent or `"ask"`, ask the user to choose **低 token 版** or **高 token 版** before heavy reading. The question must clearly state the tradeoff: low token is faster and cheaper but less detailed; high token is deeper but slower and more expensive.
 
 Compound loop schema — `threads_skill_learnings.log` — is defined in `knowledge/_shared/compound-log-format.md`. `/review` writes misses to it; `/optimize` reads it, proposes rule changes, and appends `supersedes` entries when the user approves edits. No other sub-skill touches the log.
 

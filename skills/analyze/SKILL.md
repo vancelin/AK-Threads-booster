@@ -1,7 +1,7 @@
 ---
 name: analyze
 description: "Decision-first analysis for a finished Threads post: style matching, psychology analysis, algorithm alignment, upside drivers, suppression risks, and AI-tone detection. Use after the user writes a post, or when they ask to analyze, check, inspect, or AK-review a draft."
-version: "1.2.0"
+version: "1.2.1"
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -49,6 +49,8 @@ Follow the discovery order in `knowledge/_shared/discovery.md` (Glob `**/knowled
 ## User Data Acquisition
 
 Walk the path hierarchy in `references/data-paths.md`.
+
+Before loading history or knowledge, resolve `runtime.token_mode` per `knowledge/_shared/runtime-budget.md`. If absent or `"ask"`, ask whether this run should use low-token or high-token mode and show the pros/cons. Low-token maps to compiled memory + quick cards + brief output. High-token maps to deep source reads + full output.
 
 Default low-token path:
 

@@ -42,13 +42,22 @@ What changed in AK-Threads-Booster, in plain language.
 
 `threads_booster_config.json` 現在支援 `runtime.depth`、`runtime.compiled_memory`、`analyze.output_mode`。預設是 `standard + prefer + brief`：省 token，但不犧牲基本判斷品質。
 
+### 新增低 token / 高 token 選擇問題
+
+如果使用者還沒有設定偏好，Skill 會在重度讀取前先問：
+
+- **低 token 版**：比較快、省用量，適合日常檢查、一般選題、普通草稿；缺點是細節較少，遇到微妙風格或演算法邊界時可能要再切高 token。
+- **高 token 版**：讀更多歷史資料與完整知識庫，適合重要貼文、深度品牌聲音校準、重大策略決策；缺點是比較慢，也更耗 Agent 用量。
+
+這樣用戶可以自己決定這次要省額度，還是要完整深挖。
+
 ### `/AGENTS.md` 變輕了
 
 `AGENTS.md` 現在只做 routing、核心原則、低 token runtime 提醒，不再內嵌整份 `/analyze` 流程。這可以減少支援 AGENTS.md 的工具一進場就讀到重複規則。
 
 ### 新增 runtime budget eval
 
-`evals/rubric.md` 新增 G 組檢查，確認 low-token runtime 會先用 compiled memory、tracker 仍是 source of truth、quick cards 會先於 deep knowledge 使用、brief output 不會偷偷輸出完整長報告。
+`evals/rubric.md` 新增 G 組檢查，確認 low-token runtime 會先用 compiled memory、tracker 仍是 source of truth、quick cards 會先於 deep knowledge 使用、brief output 不會偷偷輸出完整長報告，也會在沒有偏好時先問低 token / 高 token 選擇。
 
 ### 版本
 
@@ -56,6 +65,14 @@ What changed in AK-Threads-Booster, in plain language.
 - `setup` / `analyze` / `draft` / `review` / `refresh`：`1.1.0` → `1.2.0`
 - `topics` / `predict`：`1.0.0` → `1.1.0`
 - Eval rubric：`1.1.0` → `1.2.0`
+
+### Patch：Token 模式選擇
+
+- Main `SKILL.md`：`1.2.0` → `1.2.1`
+- `analyze` / `draft` / `review`：`1.2.0` → `1.2.1`
+- `topics` / `predict`：`1.1.0` → `1.1.1`
+- Runtime budget policy：`1.0.0` → `1.0.1`
+- Eval rubric：`1.2.0` → `1.2.1`
 
 ---
 

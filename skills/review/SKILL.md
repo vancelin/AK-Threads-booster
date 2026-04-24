@@ -1,7 +1,7 @@
 ---
 name: review
 description: "Post-publish feedback loop: collect actual metrics, compare against predictions, update the tracker, refresh style conclusions carefully, and learn from deviations."
-version: "1.2.0"
+version: "1.2.1"
 allowed-tools: Read, Write, Edit, Grep, Glob
 ---
 
@@ -34,6 +34,8 @@ Search for:
 - `concept_library.md`
 
 If the tracker is missing, tell the user to supply historical data or run `/setup` first.
+
+Before loading broader history or algorithm context, resolve `runtime.token_mode` per `knowledge/_shared/runtime-budget.md`. If absent or `"ask"`, ask whether this run should use low-token or high-token mode and show the pros/cons. Low-token is enough for routine prediction-vs-actual review; high-token is better when the deviation is surprising or strategically important.
 
 ---
 

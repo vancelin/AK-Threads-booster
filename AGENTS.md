@@ -36,6 +36,8 @@ For low-token runtime, also read:
 
 The sub-skill decides which cards, deep knowledge files, and user data files are needed.
 
+If `runtime.token_mode` is absent or `"ask"`, ask the user whether this run should use **低 token 版** or **高 token 版** before heavy reading. Use the exact tradeoffs in `runtime-budget.md`: low token is faster and cheaper but less detailed; high token is deeper and better for important posts but slower and more expensive.
+
 ## User Data
 
 Look in the working directory, not necessarily the repo root:

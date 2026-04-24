@@ -2,7 +2,7 @@
 
 > Shared policy for keeping AK-Threads-Booster usable on low-allowance agents.
 
-Version: 1.0.0
+Version: 1.0.1
 
 ---
 
@@ -17,6 +17,7 @@ Read `threads_booster_config.json` if present. If a key is absent, use:
 ```json
 {
   "runtime": {
+    "token_mode": "ask",
     "depth": "standard",
     "compiled_memory": "prefer"
   },
@@ -25,6 +26,35 @@ Read `threads_booster_config.json` if present. If a key is absent, use:
   }
 }
 ```
+
+## Token Mode Choice
+
+If `runtime.token_mode` is absent or `"ask"` and the run is interactive, ask before doing any heavy reading:
+
+```text
+這次要用哪種模式？
+
+1. 低 token 版（建議日常使用）
+   優點：比較快、省用量，適合日常檢查、一般選題、普通草稿。
+   缺點：主要讀 compiled memory + quick cards，細節比較少；遇到微妙風格或演算法邊界時，可能需要再切高 token 深挖。
+
+2. 高 token 版
+   優點：讀更多歷史資料與完整知識庫，分析更細，適合重要貼文、深度品牌聲音校準、重大策略決策。
+   缺點：比較慢，也更耗 Agent 用量。
+
+你可以回「低 token」、「高 token」、「這次低 token」、「這次高 token」。
+```
+
+Map the choice:
+
+| User choice | Runtime mapping |
+|---|---|
+| low token / 低 token | `runtime.depth = "standard"`, `runtime.compiled_memory = "prefer"`, `analyze.output_mode = "brief"` |
+| high token / 高 token | `runtime.depth = "deep"`, `runtime.compiled_memory = "off"` for the current run unless the skill only needs compiled memory as an index, `analyze.output_mode = "full"` |
+
+If the user says "always low token" or "always high token", persist `runtime.token_mode` only from a write-capable config owner. If the current skill cannot write config, apply the choice for the current run and tell the user how to make it permanent.
+
+If the run is headless or cannot ask, default to low token mapping. This protects low-allowance agents from surprise cost.
 
 ## `runtime.depth`
 

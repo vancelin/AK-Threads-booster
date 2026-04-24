@@ -1,7 +1,7 @@
 ---
 name: predict
 description: "Estimate likely 24-hour post performance from the user's historical data. Use after the user writes a post and wants a range estimate, upside view, or expectation check."
-version: "1.1.0"
+version: "1.1.1"
 allowed-tools: Read, Write, Edit, Grep, Glob
 ---
 
@@ -36,6 +36,8 @@ Use the strongest available data path:
 - `style_guide.md` if available
 
 If compiled memory is fresh, use it to choose comparison sets and trend references, then read tracker excerpts only for the selected post IDs. If compiled memory is missing or stale, use the tracker directly. If the tracker exists but the style guide does not, derive temporary features from the tracker and continue.
+
+Before loading history or knowledge, resolve `runtime.token_mode` per `knowledge/_shared/runtime-budget.md`. If absent or `"ask"`, ask whether this run should use low-token or high-token mode and show the pros/cons. Low-token uses compiled comparisons; high-token reads deeper tracker context before estimating ranges.
 
 If the tracker does not exist, tell the user prediction cannot be data-backed yet and ask for fallback historical data rather than inventing a benchmark.
 

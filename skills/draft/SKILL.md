@@ -1,7 +1,7 @@
 ---
 name: draft
 description: "Select a topic and generate a draft based on the user's Brand Voice. Draft quality depends on Brand Voice completeness. Trigger words: 'draft', 'write', '起草', '寫文'."
-version: "1.2.0"
+version: "1.2.1"
 allowed-tools: Read, Write, Grep, Glob, WebSearch, WebFetch
 ---
 
@@ -49,12 +49,15 @@ If `style_guide.md` is missing, remind the user to run `/setup` first.
 
 Load `knowledge/_shared/config.md` (full schema, defaults, `discussion_mode` semantics). Read `threads_booster_config.json` from the working directory (treat as empty if absent). For `/draft`, relevant keys:
 
+- `runtime.token_mode` — asks low-token vs high-token before heavy reading when absent or `"ask"`
 - `runtime.depth` and `runtime.compiled_memory` — shared low-token behavior
 - `draft.discussion_mode` — gates Steps 3c and 6
 - `draft.research_angle_expansion` — gates the missed-angle block in Step 3b
 - `analyze.output_mode` — may be persisted here if the user asks to make brief/standard/full analysis permanent
 
 `/draft` is the only skill authorized to write this file. If a persistence action is needed here or delegated from `/analyze`/`/review`, write only the changed key and preserve the rest.
+
+If `runtime.token_mode` is absent or `"ask"`, ask the user whether this run should use low-token or high-token mode and clearly state pros/cons. If the user says "always low token" or "always high token", persist only the runtime keys needed for that mode, preserving the rest of the config.
 
 ### Step 1: Load Brand Voice Data
 

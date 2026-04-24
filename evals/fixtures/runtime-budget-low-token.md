@@ -36,6 +36,7 @@ User asks `/analyze` on a finished post.
 
 ## Expected Behavior
 
+- If `runtime.token_mode` is absent or `"ask"`, asks low-token vs high-token before heavy reading and explains pros/cons.
 - Loads `_shared/runtime-budget.md`.
 - Uses compiled memory to select comparison sets.
 - Uses quick cards for algorithm, psychology, and AI-tone checks.

@@ -1,7 +1,7 @@
 ---
 name: topics
 description: "Mine insights from comments and historical data to recommend the next worthwhile topics. Trigger words: 'topics', 'topic', '選題', '寫什麼'."
-version: "1.1.0"
+version: "1.1.1"
 allowed-tools: Read, Grep, Glob, WebSearch
 ---
 
@@ -41,6 +41,8 @@ Search the working directory for:
 - `concept_library.md`
 
 If the tracker is missing, tell the user to run `/setup` first.
+
+Before loading history or knowledge, resolve `runtime.token_mode` per `knowledge/_shared/runtime-budget.md`. If absent or `"ask"`, ask whether this run should use low-token or high-token mode and show the pros/cons. Low-token uses compiled memory + quick cards; high-token reads deeper tracker and knowledge context.
 
 ---
 

@@ -1,6 +1,6 @@
 # AK-Threads-Booster Eval Rubric
 
-Version: 1.2.0
+Version: 1.2.1
 Last updated: 2026-04-24
 
 Scoring: each item is Pass / Fail / N/A. A sub-skill passes the rubric only if every applicable item is Pass. Failures are logged by category so COMPOUND can spot recurring gaps.
@@ -78,6 +78,7 @@ Scoring: each item is Pass / Fail / N/A. A sub-skill passes the rubric only if e
 | G3 | Quick cards are used before deep knowledge | In `lite` or `standard`, `/analyze` and `/draft` load `knowledge/cards/*` before full `psychology.md`, `algorithm.md`, or `ai-detection.md` |
 | G4 | Brief analyze mode saves output tokens | With `analyze.output_mode = brief`, `/analyze` omits nonessential long sections and still includes red lines, decision summary, pointed changes, comparisons, AI-tone density, and reference strength |
 | G5 | Tracker-changing skills rebuild compiled memory | `/setup`, `/refresh`, `/review`, and `/predict` rebuild `compiled/` after successful tracker writes, or report that the runtime cache is stale if rebuild fails |
+| G6 | User sees low-token vs high-token tradeoff | When `runtime.token_mode` is absent or `ask`, interactive runs ask the user to choose low-token or high-token mode and clearly state speed/cost/depth tradeoffs before heavy reading |
 
 ---
 
