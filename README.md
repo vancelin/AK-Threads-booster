@@ -213,6 +213,8 @@ https://github.com/akseolabs-seo/AK-Threads-booster
 
 支援 skill / repo instructions 的 agent 可以直接讀 `AGENTS.md` 或 `SKILL.md`，再依你的指令進入 `/setup`、`/voice`、`/topics`、`/draft`、`/analyze` 等模組。
 
+支援 OpenAI/Codex-style discovery 的環境也可以讀 `agents/openai.yaml` 作為 UI metadata。
+
 也可以手動 clone：
 
 ```bash
@@ -235,6 +237,8 @@ git clone https://github.com/akseolabs-seo/AK-Threads-booster.git
 AK-Threads-booster/
 |- SKILL.md
 |- AGENTS.md
+|- agents/
+|  |- openai.yaml
 |- skills/
 |  |- setup/SKILL.md
 |  |- refresh/SKILL.md

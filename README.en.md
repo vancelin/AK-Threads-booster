@@ -150,6 +150,8 @@ https://github.com/akseolabs-seo/AK-Threads-booster
 
 Agents that support repo instructions or skill directories can read `AGENTS.md` or `SKILL.md`, then route into `/setup`, `/voice`, `/topics`, `/draft`, `/analyze`, and the other modules.
 
+Environments that support OpenAI/Codex-style discovery can also read `agents/openai.yaml` as UI metadata.
+
 You can also clone it manually:
 
 ```bash
@@ -166,6 +168,8 @@ Place the repo in the skill or agent-instructions directory used by the target t
 AK-Threads-booster/
 |- SKILL.md
 |- AGENTS.md
+|- agents/
+|  |- openai.yaml
 |- skills/
 |  |- setup/SKILL.md
 |  |- refresh/SKILL.md
